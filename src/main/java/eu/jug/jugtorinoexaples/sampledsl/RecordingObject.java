@@ -59,7 +59,7 @@ public class RecordingObject implements MethodInterceptor {
 	
 	private String getCurrentPropertyName(Method met){
 		return ofNullable(  met.getAnnotation(MongoFieldName.class) )
-					.flatMap( a -> ofNullable(a.value()))
+					.map( a -> a.value() )
 					.orElse( getterToField( met.getName() ) );
 	}
 
